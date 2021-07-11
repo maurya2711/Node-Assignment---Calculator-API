@@ -34,7 +34,7 @@ app.post("/add", function (req, res) {
       sumObj.message = "Overflow";
     } else {
       sumObj.status = "success";
-      sumObj.message = "sum of two numbers is";
+      sumObj.message = "the sum of given two numbers";
       sumObj.sum = num1 + num2;
     }
   }
