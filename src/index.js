@@ -116,15 +116,15 @@ app.post("/divide", function (req, res) {
     sumObj.status = "error";
     sumObj.message = "Invalid data types";
   } else {
-    if (num1 < -1000000 || num2 < -1000000 || num1 / num2 < -1000000) {
+    if (num2 === 0) {
+      sumObj.status = "error";
+      sumObj.message = "Cannot divide by zero";
+    } else if (num1 < -1000000 || num2 < -1000000 || num1 / num2 < -1000000) {
       sumObj.status = "error";
       sumObj.message = "Underflow";
     } else if (num1 > 1000000 || num2 > 1000000 || num1 / num2 > 1000000) {
       sumObj.status = "error";
       sumObj.message = "Overflow";
-    } else if (num2 === 0) {
-      sumObj.status = "error";
-      sumObj.message = "Cannot divide by zero";
     } else {
       sumObj.status = "success";
       sumObj.message = "The division of given numbers";
