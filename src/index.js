@@ -94,7 +94,7 @@ app.post("/multiply", function (req, res) {
       sumObj.message = "Overflow";
     } else {
       sumObj.status = "success";
-      sumObj.message = "he product of given numbers";
+      sumObj.message = "The product of given numbers";
       sumObj.result = num1 * num2;
     }
   }
