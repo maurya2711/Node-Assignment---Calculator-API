@@ -1,137 +1,136 @@
-const express = require('express');
+const express = require("express");
 const app = express();
 //const bodyParser = require("body-parser");
 const port = 3000;
 app.use(express.urlencoded());
 // Parse JSON bodies (as sent by API clients)
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }))
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 // your code goes here
-app.get('/',function(req,res){
-    res.send('Hello world!');
+app.get("/", function (req, res) {
+  res.send("Hello world!");
 });
 
-app.post('/add', function (req, res) {
-    const sumObj = {
-        status: "",
-        message: "",
-        sum: ""
-    }
-​
-    const num1 = Number(req.body.num1);
-    const num2 = Number(req.body.num2);
-​
-    if (isNaN(num1) || isNaN(num2)) {
-        sumObj.status = "error";
-        sumObj.message = "Invalid data types";
+app.post("/add", function (req, res) {
+  const sumObj = {
+    status: "",
+    message: "",
+    sum: ""
+  };
+
+  const num1 = Number(req.body.num1);
+  const num2 = Number(req.body.num2);
+
+  if (isNaN(num1) || isNaN(num2)) {
+    sumObj.status = "error";
+    sumObj.message = "Invalid data types";
+  } else {
+    if (num1 < -1000000 || num2 < -1000000 || num1 + num2 < -1000000) {
+      sumObj.status = "error";
+      sumObj.message = "Underflow";
+    } else if (num1 > 1000000 || num2 > 1000000 || num1 + num2 > 1000000) {
+      sumObj.status = "error";
+      sumObj.message = "Overflow";
     } else {
-        if (num1 < -1000000 || num2 < -1000000 || (num1 + num2) < -1000000) {
-            sumObj.status = "error";
-            sumObj.message = "Underflow";
-        } else if (num1 > 1000000 || num2 > 1000000 || (num1 + num2) > 1000000) {
-            sumObj.status = "error";
-            sumObj.message = "Overflow";
-        } else {
-            sumObj.status = "success";
-            sumObj.message = "sum of two numbers is";
-            sumObj.sum = num1 + num2;
-        }
+      sumObj.status = "success";
+      sumObj.message = "sum of two numbers is";
+      sumObj.sum = num1 + num2;
     }
-​
-    res.send(sumObj);
+  }
+
+  res.send(sumObj);
 });
-​
-​
-app.post('/sub', function (req, res) {
-    const sumObj = {
-        status: "",
-        message: "",
-        difference: ""
-    }
-​
-    const num1 = Number(req.body.num1);
-    const num2 = Number(req.body.num2);
-​
-    if (isNaN(num1) || isNaN(num2)) {
-        sumObj.status = "error";
-        sumObj.message = "Invalid data types";
+
+app.post("/sub", function (req, res) {
+  const sumObj = {
+    status: "",
+    message: "",
+    difference: ""
+  };
+
+  const num1 = Number(req.body.num1);
+  const num2 = Number(req.body.num2);
+
+  if (isNaN(num1) || isNaN(num2)) {
+    sumObj.status = "error";
+    sumObj.message = "Invalid data types";
+  } else {
+    if (num1 < -1000000 || num2 < -1000000 || num1 - num2 < -1000000) {
+      sumObj.status = "error";
+      sumObj.message = "Underflow";
+    } else if (num1 > 1000000 || num2 > 1000000 || num1 - num2 > 1000000) {
+      sumObj.status = "error";
+      sumObj.message = "Overflow";
     } else {
-        if (num1 < -1000000 || num2 < -1000000 || (num1 - num2) < -1000000) {
-            sumObj.status = "error";
-            sumObj.message = "Underflow";
-        } else if (num1 > 1000000 || num2 > 1000000 || (num1 - num2) > 1000000) {
-            sumObj.status = "error";
-            sumObj.message = "Overflow";
-        } else {
-            sumObj.status = "success";
-            sumObj.message = "difference of two numbers is";
-            sumObj.difference = num1 - num2;
-        }
+      sumObj.status = "success";
+      sumObj.message = "difference of two numbers is";
+      sumObj.difference = num1 - num2;
     }
-​
-    res.send(sumObj);
+  }
+
+  res.send(sumObj);
 });
-​
-app.post('/multiply', function (req, res) {
-    const sumObj = {
-        status: "",
-        message: "",
-        result: ""
-    }
-​
-    const num1 = Number(req.body.num1);
-    const num2 = Number(req.body.num2);
-​
-    if (isNaN(num1) || isNaN(num2)) {
-        sumObj.status = "error";
-        sumObj.message = "Invalid data types";
+
+app.post("/multiply", function (req, res) {
+  const sumObj = {
+    status: "",
+    message: "",
+    result: ""
+  };
+
+  const num1 = Number(req.body.num1);
+  const num2 = Number(req.body.num2);
+
+  if (isNaN(num1) || isNaN(num2)) {
+    sumObj.status = "error";
+    sumObj.message = "Invalid data types";
+  } else {
+    if (num1 < -1000000 || num2 < -1000000 || num1 * num2 < -1000000) {
+      sumObj.status = "error";
+      sumObj.message = "Underflow";
+    } else if (num1 > 1000000 || num2 > 1000000 || num1 * num2 > 1000000) {
+      sumObj.status = "error";
+      sumObj.message = "Overflow";
     } else {
-        if (num1 < -1000000 || num2 < -1000000 || (num1 * num2) < -1000000) {
-            sumObj.status = "error";
-            sumObj.message = "Underflow";
-        } else if (num1 > 1000000 || num2 > 1000000 || (num1 * num2) > 1000000) {
-            sumObj.status = "error";
-            sumObj.message = "Overflow";
-        } else {
-            sumObj.status = "success";
-            sumObj.message = "resulr of two numbers is";
-            sumObj.result = num1 * num2;
-        }
+      sumObj.status = "success";
+      sumObj.message = "resulr of two numbers is";
+      sumObj.result = num1 * num2;
     }
-​
-    res.send(sumObj);
+  }
+
+  res.send(sumObj);
 });
-​
-app.post('/divide', function (req, res) {
-    const sumObj = {
-        status: "",
-        message: "",
-        result: ""
-    }
-​
-    const num1 = Number(req.body.num1);
-    const num2 = Number(req.body.num2);
-​
-    if (isNaN(num1) || isNaN(num2)) {
-        sumObj.status = "error";
-        sumObj.message = "Invalid data types";
+
+app.post("/divide", function (req, res) {
+  const sumObj = {
+    status: "",
+    message: "",
+    result: ""
+  };
+
+  const num1 = Number(req.body.num1);
+  const num2 = Number(req.body.num2);
+
+  if (isNaN(num1) || isNaN(num2)) {
+    sumObj.status = "error";
+    sumObj.message = "Invalid data types";
+  } else {
+    if (num1 < -1000000 || num2 < -1000000 || num1 / num2 < -1000000) {
+      sumObj.status = "error";
+      sumObj.message = "Underflow";
+    } else if (num1 > 1000000 || num2 > 1000000 || num1 / num2 > 1000000) {
+      sumObj.status = "error";
+      sumObj.message = "Overflow";
     } else {
-        if (num1 < -1000000 || num2 < -1000000 || (num1 / num2) < -1000000) {
-            sumObj.status = "error";
-            sumObj.message = "Underflow";
-        } else if (num1 > 1000000 || num2 > 1000000 || (num1 / num2) > 1000000) {
-            sumObj.status = "error";
-            sumObj.message = "Overflow";
-        } else {
-            sumObj.status = "success";
-            sumObj.message = "resulr of two numbers is";
-            sumObj.result = num1 / num2;
-        }
+      sumObj.status = "success";
+      sumObj.message = "resulr of two numbers is";
+      sumObj.result = num1 / num2;
     }
-​
-    res.send(sumObj);
+  }
+
+  res.send(sumObj);
 });
-​
-app.listen(port, () => console.log(`App listening on port ${port}!`))
+
+app.listen(port, () => console.log(`App listening on port ${port}!`));
 module.exports = app;
