@@ -64,7 +64,7 @@ app.post("/sub", function (req, res) {
       sumObj.message = "Overflow";
     } else {
       sumObj.status = "success";
-      sumObj.message = "difference of two numbers is";
+      sumObj.message = "the difference of given two numbers";
       sumObj.difference = num1 - num2;
     }
   }
@@ -94,7 +94,7 @@ app.post("/multiply", function (req, res) {
       sumObj.message = "Overflow";
     } else {
       sumObj.status = "success";
-      sumObj.message = "resulr of two numbers is";
+      sumObj.message = "he product of given numbers";
       sumObj.result = num1 * num2;
     }
   }
@@ -124,7 +124,7 @@ app.post("/divide", function (req, res) {
       sumObj.message = "Overflow";
     } else {
       sumObj.status = "success";
-      sumObj.message = "resulr of two numbers is";
+      sumObj.message = "The division of given numbers";
       sumObj.result = num1 / num2;
     }
   }
