@@ -11,7 +11,7 @@ app.use(express.json());
 app.get('/',function(req,res){
     res.send('Hello world!');
 });
-​
+
 app.post('/add', function (req, res) {
     const sumObj = {
         status: "",
